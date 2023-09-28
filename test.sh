@@ -4,7 +4,7 @@ TESTS_DIR=$(pwd)/$ROBOT_TESTS_DIR
 sudo mkdir $REPORTS_DIR && sudo chmod 777 $REPORTS_DIR
 
 docker run --shm-size=$ALLOWED_SHARED_MEMORY \
-  --network host \
+  -e ROBOT_OPTIONS="-v SUT_BASE_URL:host.docker.internal:5000" \
   -e BROWSER=$BROWSER \
   -e ROBOT_THREADS=$ROBOT_THREADS \
   -e PABOT_OPTIONS="$PABOT_OPTIONS" \
